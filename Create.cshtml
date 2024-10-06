@@ -1,0 +1,36 @@
+@model TaskManager.Web.Models.TaskItem
+
+@{
+    ViewData["Title"] = "Criar Tarefa";
+}
+
+<h1>Criar Tarefa</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label asp-for="DueDate"></label>
+        <input asp-for="DueDate" type="date" />
+        <span asp-validation-for="DueDate"></span>
+    </div>
+    <div>
+        <label asp-for="Status"></label>
+        <select asp-for="Status">
+            <option value="Pending">Pendente</option>
+            <option value="Completed">Completo</option>
+        </select>
+        <span asp-validation-for="Status"></span>
+    </div>
+    <button type="submit">Criar</button>
+</form>
+
+<a href="@Url.Action("Index", "Tasks")">Voltar</a>

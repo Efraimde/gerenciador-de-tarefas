@@ -1,0 +1,40 @@
+@model IEnumerable<TaskManager.Web.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "Tarefas";
+}
+
+<h1>Tarefas</h1>
+
+<a href="@Url.Action("Create", "Tasks")">Criar Nova Tarefa</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Data de Vencimento</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Title</td>
+                    <td>@task.Description</td>
+                    <td>@task.DueDate.ToShortDateString()</td>
+                    <td>@task.Status</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Nenhuma tarefa encontrada.</td>
+            </tr>
+        }
+    </tbody>
+</table>
